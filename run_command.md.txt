@@ -1,0 +1,42 @@
+First Run Server
+python .\main.py
+
+#####  TO ADD EXPENSE ####
+$body =PS C:\Users\vidya.g\Documents\GitHub\practice_api> $body = @{ title="Geetham"; amount=578; category="Food" } | ConvertTo-Json
+se" -Method Post -Body $body -ContentType "application/json" 
+
+$body = @{
+  title    = "KFC Dinner"
+  amount   = 750
+  category = "Food"
+} | ConvertTo-Json
+
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/expenses/3" -Method Put -Body $body -ContentType "application/json"
+
+#### CHECK EXPENSE ####
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/expenses"
+
+
+
+##### UPDATE EXPENSE ####
+# 1) Set the ID you want to update
+$expenseId = 3   # change this
+
+# 2) Set the new values
+$body = @{
+  title    = "New Title"
+  amount   = 123.45
+  category = "New Category"
+} | ConvertTo-Json
+
+# 3) Send PUT request
+Invoke-RestMethod `
+  -Uri "http://127.0.0.1:8000/expenses/$expenseId" `
+  -Method Put `
+  -Body $body `
+  -ContentType "application/json"
+
+
+ #### DELETE ####
+ $expenseId = 3   # change to the id you want to delete
+Invoke-RestMethod -Uri "http://127.0.0.1:8000/expenses/$expenseId" -Method Delete 
