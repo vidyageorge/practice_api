@@ -40,3 +40,15 @@ Invoke-RestMethod `
  #### DELETE ####
  $expenseId = 3   # change to the id you want to delete
 Invoke-RestMethod -Uri "http://127.0.0.1:8000/expenses/$expenseId" -Method Delete 
+
+
+POSTMAN
+
+Post body -raw
+{
+  "name": "Vidya Pixel 6 Pro",
+  "data": {
+    "color": "Marble blue",
+    "capacity": "64 GB"
+  }
+}
