@@ -35,9 +35,43 @@ def add_expense(expense: Expense):
         "expense": expense,
     }
 
-@vidya_expenses_app.get("/expenses")
-def get_expenses():
-   return expenses
+@vidya_expenses_app.get("/highest-expense")
+def highest_expense():
+    if not expenses:
+        return {"message": "No expenses found"}
+
+    highest = max(expenses, key=lambda x: x["amount"])
+
+    return highest
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 if __name__ == "__main__":
     uvicorn.run(vidya_expenses_app, host="0.0.0.0", port=8000)

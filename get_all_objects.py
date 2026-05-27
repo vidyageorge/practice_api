@@ -1,3 +1,5 @@
+# curl https://api.restful-api.dev/objects
+
 import requests
 
 url="https://api.restful-api.dev/objects"
